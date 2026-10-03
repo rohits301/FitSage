@@ -1,8 +1,3 @@
-# Install after adding credentials and completing the live integration checklist.
+# Only for the optional LLM answer writer (GENERATION=openai).
 -r requirements.txt
 openai>=1.0,<3.0
-langchain>=0.3,<2.0
-langchain-openai>=0.2,<2.0
-langchain-pinecone>=0.2,<2.0
-pinecone>=5.0,<9.0
-

@@ -1,0 +1,461 @@
+[
+  {
+    "id": "d1",
+    "question": "Is there a cap on how much iron an adult can safely take in a day?",
+    "relevant_passage_ids": [
+      "iron-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d2",
+    "question": "Which foods are good for getting vitamin D?",
+    "relevant_passage_ids": [
+      "vitd-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d3",
+    "question": "Do I need to pause my osteoporosis pills around magnesium supplements?",
+    "relevant_passage_ids": [
+      "mg-5"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d4",
+    "question": "Should my calcium pills be split across the day?",
+    "relevant_passage_ids": [
+      "ca-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d5",
+    "question": "What should vegans do about B12?",
+    "relevant_passage_ids": [
+      "b12-3",
+      "b12-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d6",
+    "question": "Can fish oil capsules cause bleeding if I'm on blood thinners?",
+    "relevant_passage_ids": [
+      "o3-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d7",
+    "question": "Is cardio the same thing as aerobic exercise?",
+    "relevant_passage_ids": [
+      "mlp-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d8",
+    "question": "How many times a week should I train each muscle?",
+    "relevant_passage_ids": [
+      "freq-1",
+      "freq-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d9",
+    "question": "Does more weekly volume mean more muscle?",
+    "relevant_passage_ids": [
+      "vol-1",
+      "vol-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d10",
+    "question": "Is creatine safe to take for years?",
+    "relevant_passage_ids": [
+      "creatine-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d11",
+    "question": "How many mg of caffeine per kg before a workout?",
+    "relevant_passage_ids": [
+      "ex-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d12",
+    "question": "Which medicines raise potassium levels?",
+    "relevant_passage_ids": [
+      "k-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d13",
+    "question": "What protein per kg body weight should lifters aim for?",
+    "relevant_passage_ids": [
+      "issn_protein-1",
+      "morton-1",
+      "morton-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d14",
+    "question": "What's the best running shoe for flat feet?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d15",
+    "question": "How many calories should I eat to lose 10 pounds?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d16",
+    "question": "Is intermittent fasting better than eating breakfast?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d17",
+    "question": "Which sunscreen SPF should I use?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d18",
+    "question": "How much vitamin D should an adult get each day?",
+    "relevant_passage_ids": [
+      "vitd-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d19",
+    "question": "Could very large vitamin D doses be toxic?",
+    "relevant_passage_ids": [
+      "vitd-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d20",
+    "question": "Why do people with obesity tend to have lower vitamin D blood levels?",
+    "relevant_passage_ids": [
+      "vitd-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d21",
+    "question": "What daily magnesium amount do men and women need?",
+    "relevant_passage_ids": [
+      "mg-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d22",
+    "question": "What happens in the body if I take a lot of magnesium pills?",
+    "relevant_passage_ids": [
+      "mg-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d23",
+    "question": "Which plant foods are rich in magnesium?",
+    "relevant_passage_ids": [
+      "mg-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d24",
+    "question": "Who tends to run low on iron?",
+    "relevant_passage_ids": [
+      "iron-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d25",
+    "question": "How much iron do women in their 20s need compared to men?",
+    "relevant_passage_ids": [
+      "iron-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d26",
+    "question": "What are the best food sources of iron for someone who doesn't eat much meat?",
+    "relevant_passage_ids": [
+      "iron-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d27",
+    "question": "Why does the body need calcium?",
+    "relevant_passage_ids": [
+      "ca-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d28",
+    "question": "Which foods give Americans the most calcium?",
+    "relevant_passage_ids": [
+      "ca-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d29",
+    "question": "What are the dangers of taking excess calcium?",
+    "relevant_passage_ids": [
+      "ca-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d30",
+    "question": "How much zinc do adults need?",
+    "relevant_passage_ids": [
+      "zn-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d31",
+    "question": "Where can I find zinc in my diet?",
+    "relevant_passage_ids": [
+      "zn-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d32",
+    "question": "What are the symptoms of getting too much zinc?",
+    "relevant_passage_ids": [
+      "zn-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d33",
+    "question": "Why do older people have trouble absorbing B12?",
+    "relevant_passage_ids": [
+      "b12-5"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d34",
+    "question": "What does vitamin B12 do for the body?",
+    "relevant_passage_ids": [
+      "b12-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d35",
+    "question": "Which animal foods contain B12?",
+    "relevant_passage_ids": [
+      "b12-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d36",
+    "question": "What are the names of the three main omega-3 fats?",
+    "relevant_passage_ids": [
+      "o3-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d37",
+    "question": "Should healthy people take fish oil for their hearts?",
+    "relevant_passage_ids": [
+      "o3-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d38",
+    "question": "What are the unpleasant effects of omega-3 supplements?",
+    "relevant_passage_ids": [
+      "o3-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d39",
+    "question": "What's potassium needed for?",
+    "relevant_passage_ids": [
+      "k-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d40",
+    "question": "Which fruits and vegetables are high in potassium?",
+    "relevant_passage_ids": [
+      "k-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d41",
+    "question": "Does short-term creatine loading improve strength?",
+    "relevant_passage_ids": [
+      "ex-1",
+      "creatine-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d42",
+    "question": "Does beetroot juice help runners?",
+    "relevant_passage_ids": [
+      "ex-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d43",
+    "question": "Can beta-alanine help sprint performance?",
+    "relevant_passage_ids": [
+      "ex-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d44",
+    "question": "Do vitamin C and E supplements help workouts?",
+    "relevant_passage_ids": [
+      "ex-6"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d45",
+    "question": "What are the benefits of resistance exercises with bands?",
+    "relevant_passage_ids": [
+      "mlp-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d46",
+    "question": "How can I improve balance?",
+    "relevant_passage_ids": [
+      "mlp-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d47",
+    "question": "Is it better to take protein right after lifting or can timing be flexible?",
+    "relevant_passage_ids": [
+      "issn_protein-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d48",
+    "question": "How much protein is optimal in one meal for muscle building?",
+    "relevant_passage_ids": [
+      "issn_protein-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d49",
+    "question": "Does casein before bed help muscle repair overnight?",
+    "relevant_passage_ids": [
+      "issn_protein-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d50",
+    "question": "At what daily protein intake do extra supplements stop adding muscle?",
+    "relevant_passage_ids": [
+      "morton-1",
+      "morton-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "d51",
+    "question": "What's the best way to treat a sprained ankle?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d52",
+    "question": "Which keto diet plan is best for weight loss?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d53",
+    "question": "Can you recommend a good pre-workout powder brand?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d54",
+    "question": "How does vitamin K affect blood clotting?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d55",
+    "question": "How much water should I drink during a marathon?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d56",
+    "question": "Is a vegan diet healthier than a Mediterranean diet?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d57",
+    "question": "How many steps should I walk every day?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d58",
+    "question": "What's the recommended dose of melatonin for sleep?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d59",
+    "question": "How much vitamin C do adults need?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "d60",
+    "question": "Explain how to do a proper deadlift.",
+    "relevant_passage_ids": [],
+    "answerable": false
+  }
+]

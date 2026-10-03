@@ -15,44 +15,44 @@
     <main class="shell">
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#top" aria-label="FitSage home"><span class="mark">↗</span> FitSage</a>
-        <span class="mode"><i></i> Demo mode</span>
+        <span class="mode"><i></i> <span id="mode-label">Extractive mode</span></span>
       </nav>
 
       <section id="top" class="hero">
         <p class="eyebrow">Nutrition &amp; training research assistant</p>
         <h1>Evidence first.<br /><em>Confidence second.</em></h1>
-        <p class="intro">Ask a focused question. FitSage retrieves from a curated NIH, USDA, and PubMed starter corpus and shows the evidence it used.</p>
+        <p class="intro">Ask a focused question. FitSage searches a small, hand-verified corpus of NIH, MedlinePlus and PubMed passages, shows the exact passage it found, and declines when the evidence isn't there.</p>
       </section>
 
       <section class="ask-card" aria-labelledby="ask-title">
         <div class="ask-head"><h2 id="ask-title">What are you curious about?</h2><span>NO ACCOUNT · NO DATA SAVED</span></div>
         <form id="question-form">
           <label class="sr-only" for="question">Your question</label>
-          <textarea id="question" rows="3" maxlength="500" placeholder="e.g. How much vitamin D do adults need?" required></textarea>
+          <textarea id="question" rows="3" maxlength="500" placeholder="e.g. Which foods contain magnesium?" required></textarea>
           <div class="form-bottom"><p id="counter">0 / 500</p><button id="submit" type="submit">Ask FitSage <span>→</span></button></div>
         </form>
         <div class="chips" aria-label="Example questions">
-          <button type="button" data-question="How much vitamin D do adults aged 19–70 need?">Vitamin D intake</button>
-          <button type="button" data-question="Does protein help with resistance training?">Protein &amp; lifting</button>
-          <button type="button" data-question="How can I build a balanced plate?">Balanced meals</button>
+          <button type="button" data-question="What is the daily vitamin D recommendation for grown-ups, in IU?">Vitamin D intake</button>
+          <button type="button" data-question="What did the meta-analysis conclude about protein supplements and strength gains?">Protein &amp; lifting</button>
+          <button type="button" data-question="Is it safe to take omega-3 supplements with warfarin?">Omega-3 &amp; medicines</button>
         </div>
       </section>
 
       <section id="empty-state" class="how" aria-labelledby="how-title">
         <p class="eyebrow">How it works</p>
         <h2 id="how-title">A small RAG system built to be inspected.</h2>
-        <div class="steps"><article><b>01</b><h3>Retrieve</h3><p>Find the most relevant approved passages.</p></article><article><b>02</b><h3>Ground</h3><p>Answer only from the retrieved evidence.</p></article><article><b>03</b><h3>Verify</h3><p>Open the original source for context.</p></article></div>
+        <div class="steps"><article><b>01</b><h3>Retrieve</h3><p>Rank passages with BM25F keyword scoring fused with latent-semantic (LSA) similarity.</p></article><article><b>02</b><h3>Ground</h3><p>The answer is the top passage, shown verbatim. If the match is weak, FitSage declines.</p></article><article><b>03</b><h3>Verify</h3><p>Open the original NIH or PubMed page to read it in context.</p></article></div>
       </section>
 
       <section id="result" class="result hidden" aria-live="polite" aria-labelledby="answer-heading">
-        <div class="result-label"><span>FIT SAGE RESPONSE</span><span id="answer-mode">DEMO RETRIEVAL</span></div>
+        <div class="result-label"><span>FIT SAGE RESPONSE</span><span id="answer-mode">EXTRACTIVE</span></div>
         <h2 id="answer-heading">Evidence-backed answer</h2>
         <p id="answer-text" class="answer-text"></p>
         <div id="sources" class="sources"></div>
         <p id="safety-note" class="safety"></p>
       </section>
 
-      <footer><span>FitSage is educational, not medical advice.</span><span>Built for transparent retrieval.</span></footer>
+      <footer><span>FitSage is educational, not medical advice.</span><span id="corpus-note">Built for transparent retrieval.</span></footer>
     </main>
     <script src="/static/app.js"></script>
   </body>

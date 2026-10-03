@@ -1,0 +1,422 @@
+{
+  "metrics": {
+    "recall@1": "answerable queries whose top-ranked passage is labelled relevant (no abstention)",
+    "mrr@5": "mean reciprocal rank of the first relevant passage within the top 5",
+    "safety_loss_per_query": "answerable: 0 if top-1 relevant, 2.0 if a wrong passage is shown, 1 if the system needlessly abstains; unanswerable: 2.0 if answered, 0 if abstained",
+    "end_to_end_accuracy": "answerable: top-1 relevant AND the system answers; unanswerable: the system abstains"
+  },
+  "note": "Queries were written by the project author(s), not by independent users, against a 54-passage corpus. Treat results as a regression benchmark for this corpus, not a general accuracy claim.",
+  "test_set_sha256": "965586f538be82b003ced275fa2dedca781476bb8a6f83d4ef15c6d320cff02c",
+  "corpus_passages": 54,
+  "corpus_sources": 15,
+  "config": {
+    "tuned_on": "evaluation/queries_dev.json",
+    "bm25f": {
+      "params": {
+        "weights": {
+          "text": 1.0,
+          "section": 3.0,
+          "title": 1.0
+        },
+        "k1": 2.0,
+        "b": 0.9,
+        "stem": true,
+        "bigrams": false
+      }
+    },
+    "lsa": {
+      "params": {
+        "components": 48
+      }
+    },
+    "hybrid": {
+      "bm25": {
+        "weights": {
+          "text": 1.0,
+          "section": 3.0,
+          "title": 1.0
+        },
+        "k1": 2.0,
+        "b": 0.9,
+        "stem": true,
+        "bigrams": false
+      },
+      "lsa_components": 48,
+      "rrf_k": 20,
+      "tau": 0.42957049999999997
+    },
+    "tau": {
+      "keyword-overlap": 0.47222200000000003,
+      "bm25-plain": 0.3863085,
+      "bm25f-stem": 0.42957049999999997,
+      "lsa": 0.673489,
+      "hybrid": 0.42957049999999997
+    }
+  },
+  "dev": {
+    "n_queries": 60,
+    "n_answerable": 46,
+    "systems": {
+      "keyword-overlap": {
+        "tau": 0.4722,
+        "recall@1": 0.6304,
+        "recall@1_ci95": [
+          0.486,
+          0.755
+        ],
+        "recall@3": 0.7826,
+        "mrr@5": 0.7192,
+        "unanswerable_correctly_abstained": "14/14",
+        "answerable_wrongly_abstained": "21/46",
+        "answers_shown": "25/60",
+        "wrong_or_out_of_scope_answers_shown": "4/25",
+        "safety_loss_per_query": 0.4833,
+        "end_to_end_accuracy": 0.5833,
+        "end_to_end_ci95": [
+          0.457,
+          0.699
+        ]
+      },
+      "bm25-plain": {
+        "tau": 0.3863,
+        "recall@1": 0.6304,
+        "recall@1_ci95": [
+          0.486,
+          0.755
+        ],
+        "recall@3": 0.8478,
+        "mrr@5": 0.7362,
+        "unanswerable_correctly_abstained": "14/14",
+        "answerable_wrongly_abstained": "22/46",
+        "answers_shown": "24/60",
+        "wrong_or_out_of_scope_answers_shown": "3/24",
+        "safety_loss_per_query": 0.4667,
+        "end_to_end_accuracy": 0.5833,
+        "end_to_end_ci95": [
+          0.457,
+          0.699
+        ]
+      },
+      "bm25f-stem": {
+        "tau": 0.4296,
+        "recall@1": 0.7609,
+        "recall@1_ci95": [
+          0.621,
+          0.861
+        ],
+        "recall@3": 0.913,
+        "mrr@5": 0.8486,
+        "unanswerable_correctly_abstained": "13/14",
+        "answerable_wrongly_abstained": "14/46",
+        "answers_shown": "33/60",
+        "wrong_or_out_of_scope_answers_shown": "4/33",
+        "safety_loss_per_query": 0.3667,
+        "end_to_end_accuracy": 0.7,
+        "end_to_end_ci95": [
+          0.575,
+          0.801
+        ]
+      },
+      "lsa": {
+        "tau": 0.6735,
+        "recall@1": 0.7609,
+        "recall@1_ci95": [
+          0.621,
+          0.861
+        ],
+        "recall@3": 0.9348,
+        "mrr@5": 0.8493,
+        "unanswerable_correctly_abstained": "12/14",
+        "answerable_wrongly_abstained": "12/46",
+        "answers_shown": "36/60",
+        "wrong_or_out_of_scope_answers_shown": "6/36",
+        "safety_loss_per_query": 0.4,
+        "end_to_end_accuracy": 0.7,
+        "end_to_end_ci95": [
+          0.575,
+          0.801
+        ]
+      },
+      "hybrid": {
+        "tau": 0.4296,
+        "recall@1": 0.7826,
+        "recall@1_ci95": [
+          0.644,
+          0.877
+        ],
+        "recall@3": 0.913,
+        "mrr@5": 0.8583,
+        "unanswerable_correctly_abstained": "13/14",
+        "answerable_wrongly_abstained": "14/46",
+        "answers_shown": "33/60",
+        "wrong_or_out_of_scope_answers_shown": "3/33",
+        "safety_loss_per_query": 0.3333,
+        "end_to_end_accuracy": 0.7167,
+        "end_to_end_ci95": [
+          0.592,
+          0.815
+        ]
+      }
+    }
+  },
+  "test": {
+    "n_queries": 54,
+    "n_answerable": 39,
+    "systems": {
+      "keyword-overlap": {
+        "tau": 0.4722,
+        "recall@1": 0.6667,
+        "recall@1_ci95": [
+          0.51,
+          0.794
+        ],
+        "recall@3": 0.7179,
+        "mrr@5": 0.7188,
+        "unanswerable_correctly_abstained": "13/15",
+        "answerable_wrongly_abstained": "15/39",
+        "answers_shown": "26/54",
+        "wrong_or_out_of_scope_answers_shown": "6/26",
+        "safety_loss_per_query": 0.5,
+        "end_to_end_accuracy": 0.6111,
+        "end_to_end_ci95": [
+          0.478,
+          0.73
+        ]
+      },
+      "bm25-plain": {
+        "tau": 0.3863,
+        "recall@1": 0.6667,
+        "recall@1_ci95": [
+          0.51,
+          0.794
+        ],
+        "recall@3": 0.8462,
+        "mrr@5": 0.7564,
+        "unanswerable_correctly_abstained": "13/15",
+        "answerable_wrongly_abstained": "15/39",
+        "answers_shown": "26/54",
+        "wrong_or_out_of_scope_answers_shown": "7/26",
+        "safety_loss_per_query": 0.537,
+        "end_to_end_accuracy": 0.5926,
+        "end_to_end_ci95": [
+          0.46,
+          0.713
+        ]
+      },
+      "bm25f-stem": {
+        "tau": 0.4296,
+        "recall@1": 0.8718,
+        "recall@1_ci95": [
+          0.733,
+          0.944
+        ],
+        "recall@3": 0.9487,
+        "mrr@5": 0.9124,
+        "unanswerable_correctly_abstained": "12/15",
+        "answerable_wrongly_abstained": "7/39",
+        "answers_shown": "35/54",
+        "wrong_or_out_of_scope_answers_shown": "6/35",
+        "safety_loss_per_query": 0.3519,
+        "end_to_end_accuracy": 0.7593,
+        "end_to_end_ci95": [
+          0.631,
+          0.854
+        ]
+      },
+      "lsa": {
+        "tau": 0.6735,
+        "recall@1": 0.8974,
+        "recall@1_ci95": [
+          0.764,
+          0.959
+        ],
+        "recall@3": 0.9487,
+        "mrr@5": 0.9295,
+        "unanswerable_correctly_abstained": "11/15",
+        "answerable_wrongly_abstained": "7/39",
+        "answers_shown": "36/54",
+        "wrong_or_out_of_scope_answers_shown": "4/36",
+        "safety_loss_per_query": 0.2778,
+        "end_to_end_accuracy": 0.7963,
+        "end_to_end_ci95": [
+          0.671,
+          0.882
+        ]
+      },
+      "hybrid": {
+        "tau": 0.4296,
+        "recall@1": 0.9231,
+        "recall@1_ci95": [
+          0.797,
+          0.973
+        ],
+        "recall@3": 0.9744,
+        "mrr@5": 0.9402,
+        "unanswerable_correctly_abstained": "12/15",
+        "answerable_wrongly_abstained": "6/39",
+        "answers_shown": "36/54",
+        "wrong_or_out_of_scope_answers_shown": "6/36",
+        "safety_loss_per_query": 0.3333,
+        "end_to_end_accuracy": 0.7778,
+        "end_to_end_ci95": [
+          0.651,
+          0.868
+        ]
+      }
+    },
+    "hybrid_minus_baseline": {
+      "keyword-overlap": {
+        "recall@1_diff": 0.2564,
+        "recall@1_diff_ci95": [
+          0.128,
+          0.41
+        ],
+        "end_to_end_diff": 0.1667,
+        "end_to_end_diff_ci95": [
+          0.056,
+          0.296
+        ]
+      },
+      "bm25-plain": {
+        "recall@1_diff": 0.2564,
+        "recall@1_diff_ci95": [
+          0.128,
+          0.385
+        ],
+        "end_to_end_diff": 0.1852,
+        "end_to_end_diff_ci95": [
+          0.074,
+          0.296
+        ]
+      },
+      "bm25f-stem": {
+        "recall@1_diff": 0.0513,
+        "recall@1_diff_ci95": [
+          0.0,
+          0.128
+        ],
+        "end_to_end_diff": 0.0185,
+        "end_to_end_diff_ci95": [
+          0.0,
+          0.056
+        ]
+      }
+    },
+    "hybrid_failures": [
+      {
+        "id": "t3",
+        "question": "At what vitamin D dose do toxic symptoms appear?",
+        "expected": [
+          "vitd-4"
+        ],
+        "top1": "vitd-4",
+        "confidence": 0.396,
+        "answered": false
+      },
+      {
+        "id": "t4",
+        "question": "Does body weight affect vitamin D levels?",
+        "expected": [
+          "vitd-3"
+        ],
+        "top1": "vitd-4",
+        "confidence": 0.436,
+        "answered": true
+      },
+      {
+        "id": "t7",
+        "question": "Can magnesium tablets upset my stomach?",
+        "expected": [
+          "mg-4"
+        ],
+        "top1": "zn-3",
+        "confidence": 0.476,
+        "answered": true
+      },
+      {
+        "id": "t13",
+        "question": "Are dairy products the top calcium source?",
+        "expected": [
+          "ca-2"
+        ],
+        "top1": "ca-2",
+        "confidence": 0.297,
+        "answered": false
+      },
+      {
+        "id": "t14",
+        "question": "How large a calcium dose can my body absorb at once?",
+        "expected": [
+          "ca-3"
+        ],
+        "top1": "ca-3",
+        "confidence": 0.315,
+        "answered": false
+      },
+      {
+        "id": "t17",
+        "question": "Can taking too much zinc make me sick?",
+        "expected": [
+          "zn-3"
+        ],
+        "top1": "zn-3",
+        "confidence": 0.361,
+        "answered": false
+      },
+      {
+        "id": "t30",
+        "question": "Do antioxidant pills blunt exercise benefits?",
+        "expected": [
+          "ex-6"
+        ],
+        "top1": "ex-6",
+        "confidence": 0.278,
+        "answered": false
+      },
+      {
+        "id": "t31",
+        "question": "What kinds of exercise build muscle without a gym?",
+        "expected": [
+          "mlp-3"
+        ],
+        "top1": "mlp-3",
+        "confidence": 0.289,
+        "answered": false
+      },
+      {
+        "id": "t32",
+        "question": "Why is exercise good for me in general?",
+        "expected": [
+          "mlp-1"
+        ],
+        "top1": "zn-2",
+        "confidence": 0.456,
+        "answered": true
+      },
+      {
+        "id": "t40",
+        "question": "Should I take vitamin E supplements for my skin?",
+        "expected": [],
+        "top1": "ex-6",
+        "confidence": 0.464,
+        "answered": true
+      },
+      {
+        "id": "t41",
+        "question": "What's the upper limit for vitamin A?",
+        "expected": [],
+        "top1": "iron-4",
+        "confidence": 0.566,
+        "answered": true
+      },
+      {
+        "id": "t54",
+        "question": "How many calories are in a banana?",
+        "expected": [],
+        "top1": "k-2",
+        "confidence": 0.434,
+        "answered": true
+      }
+    ]
+  }
+}

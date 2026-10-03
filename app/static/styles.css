@@ -13,3 +13,7 @@ body { margin:0; color:var(--ink); background:radial-gradient(circle at 90% 0, #
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 @media (max-width:650px) { .shell { padding:21px 18px; }.hero { margin:66px 0 35px; }.ask-card,.result { padding:20px; }.ask-head span { display:none; }.steps { grid-template-columns:1fr; gap:0; }.how { margin:76px 0 50px; }.how h2 { font-size:27px; }footer { align-items:flex-start; flex-direction:column; gap:7px; } }
 
+
+.source p.section { margin:0 0 7px; color:#7b887f; font:10px "DM Mono",monospace; letter-spacing:.04em; }
+.result.declined { background:#fbf8f1; border-color:#ecdfc3; }
+.result.declined .result-label span:last-child { color:#9a7430; }

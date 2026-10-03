@@ -1,0 +1,405 @@
+[
+  {
+    "id": "t1",
+    "question": "What is the daily vitamin D recommendation for grown-ups, in IU?",
+    "relevant_passage_ids": [
+      "vitd-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t2",
+    "question": "Which fish are best for vitamin D?",
+    "relevant_passage_ids": [
+      "vitd-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t3",
+    "question": "At what vitamin D dose do toxic symptoms appear?",
+    "relevant_passage_ids": [
+      "vitd-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t4",
+    "question": "Does body weight affect vitamin D levels?",
+    "relevant_passage_ids": [
+      "vitd-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t5",
+    "question": "How many milligrams of magnesium should a woman get?",
+    "relevant_passage_ids": [
+      "mg-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t6",
+    "question": "What does magnesium do for muscles and nerves?",
+    "relevant_passage_ids": [
+      "mg-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t7",
+    "question": "Can magnesium tablets upset my stomach?",
+    "relevant_passage_ids": [
+      "mg-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t8",
+    "question": "Are leafy greens and nuts good magnesium sources?",
+    "relevant_passage_ids": [
+      "mg-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t9",
+    "question": "Is it true that women need more iron than men?",
+    "relevant_passage_ids": [
+      "iron-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t10",
+    "question": "Does a frequent blood donor risk low iron?",
+    "relevant_passage_ids": [
+      "iron-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t11",
+    "question": "Are lentils and beans a good iron source?",
+    "relevant_passage_ids": [
+      "iron-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t12",
+    "question": "How do muscles and nerves use calcium?",
+    "relevant_passage_ids": [
+      "ca-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t13",
+    "question": "Are dairy products the top calcium source?",
+    "relevant_passage_ids": [
+      "ca-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t14",
+    "question": "How large a calcium dose can my body absorb at once?",
+    "relevant_passage_ids": [
+      "ca-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t15",
+    "question": "What are the male and female zinc requirements?",
+    "relevant_passage_ids": [
+      "zn-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t16",
+    "question": "Are oysters high in zinc?",
+    "relevant_passage_ids": [
+      "zn-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t17",
+    "question": "Can taking too much zinc make me sick?",
+    "relevant_passage_ids": [
+      "zn-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t18",
+    "question": "Which nutrient keeps nerve and blood cells healthy and helps make DNA?",
+    "relevant_passage_ids": [
+      "b12-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t19",
+    "question": "Do eggs and dairy provide B12?",
+    "relevant_passage_ids": [
+      "b12-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t20",
+    "question": "Which cereals are fortified with B12?",
+    "relevant_passage_ids": [
+      "b12-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t21",
+    "question": "Are vegetarians at risk for low vitamin B12?",
+    "relevant_passage_ids": [
+      "b12-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t22",
+    "question": "What's the difference between ALA, EPA and DHA?",
+    "relevant_passage_ids": [
+      "o3-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t23",
+    "question": "Are there side effects of fish oil like bad breath?",
+    "relevant_passage_ids": [
+      "o3-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t24",
+    "question": "Is it safe to take omega-3 supplements with warfarin?",
+    "relevant_passage_ids": [
+      "o3-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t25",
+    "question": "What roles does potassium play for the heart and kidneys?",
+    "relevant_passage_ids": [
+      "k-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t26",
+    "question": "Which foods have a lot of potassium, like bananas?",
+    "relevant_passage_ids": [
+      "k-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t27",
+    "question": "Are blood pressure drugs like losartan a problem for potassium?",
+    "relevant_passage_ids": [
+      "k-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t28",
+    "question": "Does caffeine before exercise improve strength?",
+    "relevant_passage_ids": [
+      "ex-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t29",
+    "question": "Is beta-alanine helpful for repeated sprints?",
+    "relevant_passage_ids": [
+      "ex-4"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t30",
+    "question": "Do antioxidant pills blunt exercise benefits?",
+    "relevant_passage_ids": [
+      "ex-6"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t31",
+    "question": "What kinds of exercise build muscle without a gym?",
+    "relevant_passage_ids": [
+      "mlp-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t32",
+    "question": "Why is exercise good for me in general?",
+    "relevant_passage_ids": [
+      "mlp-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t33",
+    "question": "How much extra growth does each additional weekly set add?",
+    "relevant_passage_ids": [
+      "vol-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t34",
+    "question": "Does training twice weekly beat once weekly for hypertrophy?",
+    "relevant_passage_ids": [
+      "freq-1",
+      "freq-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t35",
+    "question": "What did the meta-analysis conclude about protein supplements and strength gains?",
+    "relevant_passage_ids": [
+      "morton-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t36",
+    "question": "Why does creatine improve high-intensity performance?",
+    "relevant_passage_ids": [
+      "creatine-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t37",
+    "question": "What's the ISSN position on daily protein for people who exercise?",
+    "relevant_passage_ids": [
+      "issn_protein-1"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t38",
+    "question": "Is a 20-40 g serving of protein enough per meal?",
+    "relevant_passage_ids": [
+      "issn_protein-3"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t39",
+    "question": "How long does the anabolic effect of a workout last?",
+    "relevant_passage_ids": [
+      "issn_protein-2"
+    ],
+    "answerable": true
+  },
+  {
+    "id": "t40",
+    "question": "Should I take vitamin E supplements for my skin?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t41",
+    "question": "What's the upper limit for vitamin A?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t42",
+    "question": "How much fiber should I eat daily?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t43",
+    "question": "Is whey protein better than plant protein?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t44",
+    "question": "What are good stretches for tight hamstrings?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t45",
+    "question": "Can you tell me if I have a vitamin deficiency based on my fatigue?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t46",
+    "question": "How many carbs should I eat on a training day?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t47",
+    "question": "What are the best exercises for lower back pain?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t48",
+    "question": "How do I read a nutrition label?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t49",
+    "question": "Is coffee bad for your heart?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t50",
+    "question": "What is the glycemic index of white rice?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t51",
+    "question": "Which sleep schedule is best for recovery?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t52",
+    "question": "How long should I rest between sets?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t53",
+    "question": "What's a safe dose of ashwagandha?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  },
+  {
+    "id": "t54",
+    "question": "How many calories are in a banana?",
+    "relevant_passage_ids": [],
+    "answerable": false
+  }
+]

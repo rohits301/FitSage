@@ -4,5 +4,4 @@ __pycache__/
 .pytest_cache/
 *.py[cod]
 .DS_Store
-evaluation/results.json
-
+Claude outputs/

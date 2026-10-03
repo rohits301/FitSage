@@ -1,0 +1,44 @@
+{
+  "tuned_on": "evaluation/queries_dev.json",
+  "bm25f": {
+    "params": {
+      "weights": {
+        "text": 1.0,
+        "section": 3.0,
+        "title": 1.0
+      },
+      "k1": 2.0,
+      "b": 0.9,
+      "stem": true,
+      "bigrams": false
+    }
+  },
+  "lsa": {
+    "params": {
+      "components": 48
+    }
+  },
+  "hybrid": {
+    "bm25": {
+      "weights": {
+        "text": 1.0,
+        "section": 3.0,
+        "title": 1.0
+      },
+      "k1": 2.0,
+      "b": 0.9,
+      "stem": true,
+      "bigrams": false
+    },
+    "lsa_components": 48,
+    "rrf_k": 20,
+    "tau": 0.42957049999999997
+  },
+  "tau": {
+    "keyword-overlap": 0.47222200000000003,
+    "bm25-plain": 0.3863085,
+    "bm25f-stem": 0.42957049999999997,
+    "lsa": 0.673489,
+    "hybrid": 0.42957049999999997
+  }
+}
