@@ -1,0 +1,11 @@
+[
+  {"id":"q1","question":"How much vitamin D do adults aged 19 to 70 need?","expected_source_ids":["nih-vitamin-d"]},
+  {"id":"q2","question":"What is the recommended amount of D vitamin for adults?","expected_source_ids":["nih-vitamin-d"]},
+  {"id":"q3","question":"What should a healthy plate look like?","expected_source_ids":["usda-myplate"]},
+  {"id":"q4","question":"How can I make my meals more balanced?","expected_source_ids":["usda-myplate"]},
+  {"id":"q5","question":"Does extra protein help when lifting weights?","expected_source_ids":["pubmed-protein-training"]},
+  {"id":"q6","question":"What does research say about protein and strength training?","expected_source_ids":["pubmed-protein-training"]},
+  {"id":"q7","question":"Which foods contain magnesium?","expected_source_ids":["nih-magnesium"]},
+  {"id":"q8","question":"Can magnesium supplements interact with medicines?","expected_source_ids":["nih-magnesium"]}
+]
+
