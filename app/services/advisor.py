@@ -20,7 +20,7 @@ _PERSONAL_MEDICAL = re.compile(
 )
 
 
-class RAGService:
+class AnswerService:
     """Hybrid retrieval, then a cited answer, or an explicit refusal.
 
     The default answer is the top retrieved passage, verbatim. An LLM writer can be

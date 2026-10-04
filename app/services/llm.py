@@ -12,10 +12,13 @@ Guard rails, all enforced in code rather than by trusting the model:
 """
 from __future__ import annotations
 
+import logging
 import re
 from typing import Optional, Sequence
 
 from app.services.retrieval import Hit
+
+log = logging.getLogger(__name__)
 
 _CITATION = re.compile(r"\[([a-z0-9_]+-\d+)\]")
 
@@ -57,10 +60,17 @@ class OpenAIAnswerer:
     def from_settings(cls, settings) -> "OpenAIAnswerer":
         from openai import OpenAI  # imported lazily: only needed in this mode
 
-        return cls(OpenAI(api_key=settings.openai_api_key), settings.openai_model)
+        return cls(OpenAI(api_key=settings.openai_api_key, timeout=20.0, max_retries=1), settings.openai_model)
 
     def answer(self, question: str, hits: Sequence[Hit]) -> Optional[str]:
-        resp = self.client.chat.completions.create(
-            model=self.model, messages=build_messages(question, hits), temperature=0
-        )
-        return validate(resp.choices[0].message.content, hits)
+        """Return a validated, cited answer, or None for any failure (the caller then
+        falls back to the verbatim passage). API errors, timeouts and malformed responses
+        are all treated as "no answer written"."""
+        try:
+            resp = self.client.chat.completions.create(
+                model=self.model, messages=build_messages(question, hits), temperature=0
+            )
+            return validate(resp.choices[0].message.content, hits)
+        except Exception as exc:  # noqa: BLE001 - deliberate: never let the optional writer break an answer
+            log.warning("LLM answer writer failed (%s); using extractive answer", type(exc).__name__)
+            return None

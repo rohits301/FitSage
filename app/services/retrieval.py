@@ -163,11 +163,13 @@ class LSARetriever:
             j = self._index.get(t)
             if j is not None:
                 q[j] = (1.0 + math.log(f)) * self._idf[j]
-        qk = q @ self._v
+        # einsum rather than `@`: for these tiny matrices it is just as fast, and it avoids
+        # spurious floating-point RuntimeWarnings some BLAS builds (macOS Accelerate) raise from matmul.
+        qk = np.einsum("t,tk->k", q, self._v)
         norm = np.linalg.norm(qk)
         if norm < 1e-12:
             return np.zeros(len(self.passages))
-        return self._docs @ (qk / norm)
+        return np.einsum("nk,k->n", self._docs, qk / norm)
 
     def search(self, query: str, k: int = 5) -> list[Hit]:
         s = self.scores(query)
@@ -224,4 +226,7 @@ class HybridRetriever:
         order = self.rank(query)
         if not order or cov[order[0]] < self.tau:
             return []
-        return [Hit(self.passages[i], float(lex[i]), float(cov[i])) for i in order[:k]]
+        # The lead passage passed the abstention check. Related passages are cited only if
+        # they clear the same bar, so weak matches are never presented as supporting sources.
+        keep = [order[0]] + [i for i in order[1:k] if cov[i] >= self.tau]
+        return [Hit(self.passages[i], float(lex[i]), float(cov[i])) for i in keep]

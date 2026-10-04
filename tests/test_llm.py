@@ -1,7 +1,7 @@
 """The LLM path is tested against a fake client only; it has not been run against a real API."""
 from types import SimpleNamespace
 
-from app.services.advisor import RAGService
+from app.services.advisor import AnswerService
 from app.services.llm import OpenAIAnswerer, validate
 
 
@@ -21,7 +21,7 @@ Q = "What are the side effects of taking a lot of magnesium?"
 
 def service(text):
     client = FakeClient(text)
-    return RAGService(answerer=OpenAIAnswerer(client, "fake-model")), client
+    return AnswerService(answerer=OpenAIAnswerer(client, "fake-model")), client
 
 
 def test_valid_citation_is_accepted():
@@ -50,3 +50,29 @@ def test_insufficient_evidence_reply_falls_back():
 
 def test_validate_rejects_empty():
     assert validate("", []) is None
+
+
+class RaisingClient:
+    """Simulates an API outage / timeout / auth failure."""
+
+    def __init__(self, exc):
+        self.chat = SimpleNamespace(completions=SimpleNamespace(create=self._create))
+        self.exc = exc
+
+    def _create(self, **kwargs):
+        raise self.exc
+
+
+def test_api_failure_falls_back_to_extractive_answer():
+    for exc in (TimeoutError("timed out"), RuntimeError("503"), ConnectionError("down")):
+        svc = AnswerService(answerer=OpenAIAnswerer(RaisingClient(exc), "fake-model"))
+        out = svc.answer(Q)
+        assert out.mode == "extractive" and out.answer == out.sources[0].excerpt
+
+
+def test_malformed_api_response_falls_back():
+    class Bad:
+        chat = SimpleNamespace(completions=SimpleNamespace(create=lambda **kw: SimpleNamespace(choices=[])))
+
+    out = AnswerService(answerer=OpenAIAnswerer(Bad(), "fake-model")).answer(Q)
+    assert out.mode == "extractive"

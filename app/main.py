@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
 from app.models import AskRequest, AskResponse
-from app.services.advisor import RAGService
+from app.services.advisor import AnswerService
 from app.services.llm import OpenAIAnswerer
 from app.services.retrieval import load_corpus
 
@@ -15,12 +15,12 @@ app = FastAPI(title="FitSage", version="0.2.0", description="Citation-first nutr
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
 
 
-def build_service() -> RAGService:
+def build_service() -> AnswerService:
     settings = get_settings()
     answerer = None
     if settings.generation.lower() == "openai" and settings.llm_configured:
         answerer = OpenAIAnswerer.from_settings(settings)
-    return RAGService(answerer=answerer)
+    return AnswerService(answerer=answerer)
 
 
 service = build_service()

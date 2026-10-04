@@ -47,3 +47,20 @@ def test_frozen_test_set_regression_floor():
     ans = [r for r in rows if r["answerable"]]
     top1 = sum(1 for r in ans if PASSAGES[hy.rank(r["question"])[0]].id in r["relevant_passage_ids"])
     assert top1 / len(ans) >= 0.85
+
+
+def test_related_citations_must_clear_the_abstention_threshold():
+    """Every source returned must itself pass the coverage bar, not just the lead one."""
+    import json
+    from app.services.retrieval import HybridRetriever, load_corpus
+
+    r = HybridRetriever.from_config(load_corpus())
+    queries = [q for q in json.loads(
+        (__import__("pathlib").Path(__file__).resolve().parents[1] / "evaluation" / "queries_test.json").read_text()
+    ) if q["answerable"]]
+    saw_fewer_than_three = False
+    for q in queries:
+        hits = r.search(q["question"], k=3)
+        assert all(h.confidence >= r.tau for h in hits), q["id"]
+        saw_fewer_than_three |= 0 < len(hits) < 3
+    assert saw_fewer_than_three  # the filter actually removes something on this corpus

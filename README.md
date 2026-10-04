@@ -1,6 +1,8 @@
 # FitSage
 
-Citation-first retrieval for nutrition and exercise questions. Ask a question and FitSage returns the exact NIH, MedlinePlus or PubMed passage that answers it, with a link to the page, or says it has no evidence when the corpus can't answer.
+Citation-first health-information retrieval for nutrition and exercise questions. Ask a question and FitSage returns the exact NIH, MedlinePlus or PubMed passage that answers it, with a link to the page, or says it has no evidence when the corpus can't answer.
+
+**Scope:** NIH Office of Dietary Supplements, NIH MedlinePlus and PubMed only. No USDA content (see Corpus).
 
 ![FitSage demo](docs/demo.gif)
 
@@ -10,7 +12,7 @@ Citation-first retrieval for nutrition and exercise questions. Ask a question an
 
 - **Is:** a small retrieval system you can read end to end. Hybrid lexical + latent-semantic ranking over **54 short passages from 15 sources**, an abstention threshold, rule-based guards for urgent and personal-medical questions, a FastAPI service and a single-page UI.
 - **Default answers are verbatim.** The answer shown is the top retrieved passage, unchanged. Nothing is generated, so the text itself can't be hallucinated; the risk is retrieving the wrong passage (see the failure list below). It also can't synthesise across passages.
-- **Isn't:** an LLM chatbot (an optional LLM answer writer exists but is off by default and not evaluated), a neural-embedding or vector-database system, or medical advice. There is no OpenAI, Pinecone or LangChain dependency in the default install.
+- **Isn't:** an LLM RAG assistant (the default pipeline is retrieval only; an *experimental* LLM answer writer exists, is off by default and is not evaluated), a neural-embedding or vector-database system, or medical advice. There is no OpenAI, Pinecone or LangChain dependency in the default install.
 
 ## Run it
 
@@ -18,10 +20,10 @@ Citation-first retrieval for nutrition and exercise questions. Ask a question an
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload       # http://127.0.0.1:8000, API docs at /docs
-pytest                              # 20 tests
+pytest                              # 23 tests; numeric RuntimeWarnings fail the run
 ```
 
-`POST /api/ask` with `{"question": "..."}` returns `answer`, `sources` (passage text, section, link, match score), `mode` (`extractive` or `declined`), and a safety note.
+`POST /api/ask` with `{"question": "..."}` returns `answer`, `sources` (passage text, section, link, match score), `mode` (`extractive`, `declined`, or `llm` when the experimental writer is on), and a safety note.
 
 ## How it works
 
@@ -31,7 +33,7 @@ question ──► guards (urgent / personal-medical) ──► BM25F ranking �
                                                                          │
                           confidence = IDF-weighted share of query terms found in the top passage
                                                                          │
-                                  below threshold ► decline      above ► show passage + 2 related, with links
+                                  below threshold ► decline      above ► show passage + up to 2 related that also clear it
 ```
 
 - **BM25F** scores stemmed query terms against passage text, section heading and source title, with per-field weights.
@@ -55,13 +57,14 @@ All numbers below are produced by `python scripts/evaluate.py` and stored in `ev
 
 | System | Top-1 (95% CI) | Top-3 | MRR@5 | Declined out-of-corpus questions (of 15) | Refused answerable questions (of 39) |
 |---|---|---|---|---|---|
-| Keyword overlap — the original FitSage baseline | 66.7% (26/39), CI 51–79% | 71.8% | 0.719 | 13/15 | 15/39 |
+| Keyword overlap — re-implementation of the original FitSage matcher | 66.7% (26/39), CI 51–79% | 71.8% | 0.719 | 13/15 | 15/39 |
 | BM25, plain text | 66.7% (26/39), CI 51–79% | 84.6% | 0.756 | 13/15 | 15/39 |
 | BM25F + stemming + section/title fields | 87.2% (34/39), CI 73–94% | 94.9% | 0.912 | 12/15 | 7/39 |
 | LSA only | 89.7% (35/39), CI 76–96% | 94.9% | 0.929 | 11/15 | 7/39 |
 | **Hybrid (BM25F + LSA, rank fusion) — what the app uses** | 92.3% (36/39), CI 80–97% | 97.4% | 0.940 | 12/15 | 6/39 |
 
 - Hybrid vs the original keyword baseline: **92.3% vs 66.7% top-1**, a difference of +25.6 points (paired-bootstrap 95% CI +12.8 to +41.0).
+- **Why hybrid is the default, and why LSA alone is not.** LSA alone scores slightly better than hybrid on the test set's safety loss (0.278 vs 0.333; 4 vs 6 wrong answers shown), but on the tuning set the order is reversed (0.400 vs 0.333). The paired-bootstrap interval for the test difference is −0.26 to +0.15, so it is indistinguishable from zero. Hybrid has the lowest tuning-set safety loss of the five systems, so the tuning set, not the test set, is the basis for keeping it as the default (picking a system because it won on the test set would leak the test into the choice). A larger independent evaluation could change this.
 - Hybrid vs BM25F alone: +5.1 points (CI +0.0 to +12.8). **That difference is borderline: the interval's lower end is 0.** Most of the gain over the baseline appears to come from stemming, section/title field weighting and parameter tuning (the BM25 → BM25F row), not from the LSA component.
 - With the abstention threshold applied, the hybrid shows an answer for 36/54 test questions; 6/36 of those answers are wrong or answer an out-of-corpus question. It declines 12/15 out-of-corpus questions and needlessly refuses 6/39 answerable ones. Failures are listed in `evaluation/results.json` under `hybrid_failures`.
 
@@ -72,9 +75,9 @@ All numbers below are produced by `python scripts/evaluate.py` and stored in `ev
 - The test set has a history. A first test set was used during development and was then merged into the tuning set. The reported test set was written afterwards and frozen before the final tuning. When USDA content was removed, the 6 test questions that depended on it were deleted (a change driven by the corpus, not by results), and the retriever was re-tuned on the tuning set. `results.json` records the SHA-256 of the test file as evaluated.
 - Because default answers are verbatim passages, there is no answer-faithfulness metric. The retrieval metrics are the only measurements here; the optional LLM writer has not been evaluated.
 
-## Optional: LLM answer writer
+## Optional, experimental: LLM answer writer
 
-Set `GENERATION=openai`, `OPENAI_API_KEY` and `OPENAI_MODEL` (and `pip install -r requirements-ai.txt`). The model sees only the retrieved passages and must cite their ids; any answer that cites a passage that wasn't retrieved, cites nothing, or says the evidence is insufficient is discarded in favour of the verbatim answer. The guard logic is unit-tested against a fake client. **It has not been run against the real API in this repository's tests or evaluation.**
+Off by default and not part of any reported number. Set `GENERATION=openai`, `OPENAI_API_KEY` and `OPENAI_MODEL` (and `pip install -r requirements-ai.txt`). The model sees only the retrieved passages and must cite their ids; any answer that cites a passage that wasn't retrieved, cites nothing, or says the evidence is insufficient is discarded in favour of the verbatim answer, and so is any API error, timeout or malformed response (tested with a failing fake client). The guard logic is unit-tested against a fake client. **It has not been run against the real API in this repository's tests or evaluation.**
 
 ## Reproduce
 
